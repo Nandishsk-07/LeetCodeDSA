@@ -77,7 +77,7 @@ Some problems have comments in the code explaining my thought process — especi
 
 ---
 
-## Connect
+### Connect
 
 If you're also grinding LeetCode and want to discuss approaches or compare solutions, feel free to reach out.
 
