@@ -1,5 +1,9 @@
-class Solution:
-    def removeCoveredIntervals(self, intervals: List[List[int]]) -> int:
+class Solution(object):
+    def removeCoveredIntervals(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: int
+        """
         intervals.sort(key=lambda x: (x[0], -x[1]))
         count = 0
         max_end = 0
@@ -9,3 +13,4 @@ class Solution:
             else:
                 max_end = end
         return len(intervals) - count
+        
