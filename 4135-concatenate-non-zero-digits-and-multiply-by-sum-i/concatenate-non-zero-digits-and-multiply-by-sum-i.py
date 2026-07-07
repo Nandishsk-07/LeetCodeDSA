@@ -1,5 +1,9 @@
-class Solution:
-    def sumAndMultiply(self, n: int) -> int:
+class Solution(object):
+    def sumAndMultiply(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
         digits = [c for c in str(n) if c != '0']
         if not digits:
             return 0
