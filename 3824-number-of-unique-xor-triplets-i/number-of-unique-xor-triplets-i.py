@@ -1,5 +1,9 @@
-class Solution:
-    def uniqueXorTriplets(self, nums: List[int]) -> int:
+class Solution(object):
+    def uniqueXorTriplets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         n = len(nums)
         if n < 3:
             return n
