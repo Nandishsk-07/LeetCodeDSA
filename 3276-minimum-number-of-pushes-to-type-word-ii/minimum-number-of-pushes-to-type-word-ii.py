@@ -1,6 +1,10 @@
 from collections import Counter
-class Solution:
-    def minimumPushes(self, word: str) -> int:
+class Solution(object):
+    def minimumPushes(self, word):
+        """
+        :type word: str
+        :rtype: int
+        """
         freq = Counter(word)
         sorted_freqs = sorted(freq.values(), reverse=True)
         total_pushes = 0
