@@ -1,10 +1,13 @@
-from typing import List
-class Solution:
-    def predictTheWinner(self, nums: List[int]) -> bool:
+class Solution(object):
+    def predictTheWinner(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
         memo = {}
-        def get_max_score_diff(i: int, j: int) -> int:
+        def get_max_score_diff(i, j):
             if i == j:
-                return nums[i]        
+                return nums[i]
             if (i, j) in memo:
                 return memo[(i, j)]
             pick_left = nums[i] - get_max_score_diff(i + 1, j)
