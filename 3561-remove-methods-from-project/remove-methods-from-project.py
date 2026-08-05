@@ -1,13 +1,18 @@
 from collections import defaultdict, deque
-from typing import List
-class Solution:
-    def remainingMethods(self, n: int, k: int, invocations: List[List[int]]) -> List[int]:
+class Solution(object):
+    def remainingMethods(self, n, k, invocations):
+        """
+        :type n: int
+        :type k: int
+        :type invocations: List[List[int]]
+        :rtype: List[int]
+        """
         adj = defaultdict(list)
         for u, v in invocations:
-            adj[u].append(v)
+            adj[u].append(v) 
         suspicious = set()
         queue = deque([k])
-        suspicious.add(k)    
+        suspicious.add(k)
         while queue:
             curr = queue.popleft()
             for neighbor in adj[curr]:
