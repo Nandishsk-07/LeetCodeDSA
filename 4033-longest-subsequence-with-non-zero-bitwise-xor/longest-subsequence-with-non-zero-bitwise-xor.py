@@ -1,5 +1,9 @@
-class Solution:
-    def longestSubsequence(self, nums: List[int]) -> int:
+class Solution(object):
+    def longestSubsequence(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         total_xor = 0
         all_zeros = True
         for num in nums:
@@ -11,4 +15,3 @@ class Solution:
         if total_xor != 0:
             return len(nums)
         return len(nums) - 1
-        
