@@ -1,5 +1,9 @@
-class Solution:
-    def stoneGameIX(self, stones: List[int]) -> bool:
+class Solution(object):
+    def stoneGameIX(self, stones):
+        """
+        :type stones: List[int]
+        :rtype: bool
+        """
         c = [0,0,0]
         for stone in stones:
             c[stone % 3] += 1
