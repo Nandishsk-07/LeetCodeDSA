@@ -1,9 +1,14 @@
-class Solution:
-    def maxNumberOfFamilies(self, n: int, reservedSeats: List[List[int]]) -> int:
+class Solution(object):
+    def maxNumberOfFamilies(self, n, reservedSeats):
+        """
+        :type n: int
+        :type reservedSeats: List[List[int]]
+        :rtype: int
+        """
         reserved_rows = defaultdict(int)
         for r, c in reservedSeats:
             if 2 <= c <= 9:
-                reserved_rows[r] |= (1 << c)
+                reserved_rows[r] |= (1 << c)       
         ans = 2 * n
         LEFT_MASK = 60
         RIGHT_MASK = 960
