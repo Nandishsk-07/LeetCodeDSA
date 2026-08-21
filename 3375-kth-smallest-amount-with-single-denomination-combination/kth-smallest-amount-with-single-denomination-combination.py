@@ -1,15 +1,25 @@
-class Solution:
-    def findKthSmallest(self, coins: List[int], k: int) -> int:
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+
+class Solution(object):
+    def findKthSmallest(self, coins, k):
+        """
+        :type coins: List[int]
+        :type k: int
+        :rtype: int
+        """
         n = len(coins)
         subsets = []
-        for r in range(1, n + 1):
+        for r in xrange(1, n + 1):
             sign = 1 if r % 2 == 1 else -1
             for combo in combinations(coins, r):
                 lcm_val = combo[0]
                 for x in combo[1:]:
-                    lcm_val = (lcm_val * x) // math.gcd(lcm_val, x)
+                    lcm_val = (lcm_val * x) // gcd(lcm_val, x)
                 subsets.append((lcm_val, sign))        
-        def count(x: int) -> int:
+        def count(x):
             total = 0
             for lcm_val, sign in subsets:
                 total += sign * (x // lcm_val)
