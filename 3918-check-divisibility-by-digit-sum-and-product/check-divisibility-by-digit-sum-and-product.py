@@ -1,5 +1,9 @@
-class Solution:
-    def checkDivisibility(self, n: int) -> bool:
+class Solution(object):
+    def checkDivisibility(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
         sum_digits = 0
         prod_digits = 1
         for digit in str(n):
