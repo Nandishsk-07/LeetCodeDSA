@@ -1,17 +1,21 @@
-class Solution:
-    def sumGame(self, num: str) -> bool:
+class Solution(object):
+    def sumGame(self, num):
+        """
+        :type num: str
+        :rtype: bool
+        """
         n = len(num)
-        half = n // 2 
+        half = n // 2
         sum_l = 0
         sum_r = 0
         q_l = 0
         q_r = 0
-        for i in range(half):
+        for i in xrange(half):
             if num[i] == '?':
                 q_l += 1
             else:
-                sum_l += int(num[i])
-        for i in range(half, n):
+                sum_l += int(num[i])       
+        for i in xrange(half, n):
             if num[i] == '?':
                 q_r += 1
             else:
