@@ -1,13 +1,18 @@
-class Solution:
-    def lexPalindromicPermutation(self, s: str, target: str) -> str:
+class Solution(object):
+    def lexPalindromicPermutation(self, s, target):
+        """
+        :type s: str
+        :type target: str
+        :rtype: str
+        """
         n = len(s)
         counts = Counter(s)
         odd_chars = [ch for ch, freq in counts.items() if freq % 2 != 0]
         if len(odd_chars) > 1:
-            return ""    
+            return ""   
         mid_char = odd_chars[0] if odd_chars else ""
         half_counts = Counter({ch: freq // 2 for ch, freq in counts.items()})
-        m = n // 2   
+        m = n // 2
         candidates = []
         target_half = target[:m]
         target_counts = Counter(target_half)
@@ -17,11 +22,11 @@ class Solution:
             first_half = target_half + suffix
             pal = first_half + mid_char + first_half[::-1]
             if pal > target:
-                candidates.append(pal)
+                candidates.append(pal)    
         prefix_counts = Counter()
-        for i in range(m):
+        for i in xrange(m):
             t_char = target[i]
-            for code in range(ord(t_char) + 1, ord('z') + 1):
+            for code in xrange(ord(t_char) + 1, ord('z') + 1):
                 c = chr(code)
                 if half_counts[c] > prefix_counts[c]:
                     rem = half_counts - prefix_counts
@@ -31,9 +36,9 @@ class Solution:
                     pal = first_half + mid_char + first_half[::-1]
                     if pal > target:
                         candidates.append(pal)
-                    break          
+                    break
             prefix_counts[t_char] += 1
             if prefix_counts[t_char] > half_counts[t_char]:
-                break  
+                break
         return min(candidates) if candidates else ""
         
