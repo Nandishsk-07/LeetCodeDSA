@@ -1,5 +1,9 @@
-class Solution:
-    def minimumDeletions(self, nums: List[int]) -> int:
+class Solution(object):
+    def minimumDeletions(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         n = len(nums)
         if n <= 2:
             return n
@@ -11,5 +15,4 @@ class Solution:
         opt2 = n - i
         opt3 = (i + 1) + (n - j)
         return min(opt1, opt2, opt3)
-
         
