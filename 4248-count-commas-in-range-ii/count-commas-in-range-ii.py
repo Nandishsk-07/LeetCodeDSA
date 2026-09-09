@@ -1,5 +1,9 @@
-class Solution:
-    def countCommas(self, n: int) -> int:
+class Solution(object):
+    def countCommas(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
         total_commas = 0
         threshold = 1000
         while n >= threshold:
