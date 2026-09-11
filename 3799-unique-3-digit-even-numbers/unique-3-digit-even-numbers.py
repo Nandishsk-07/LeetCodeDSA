@@ -1,7 +1,9 @@
-from itertools import permutations
-from typing import List
-class Solution:
-    def totalNumbers(self, digits: List[int]) -> int:
+class Solution(object):
+    def totalNumbers(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: int
+        """
         unique_numbers = set()
         for d1, d2, d3 in permutations(digits, 3):
             if d1 != 0 and d3 % 2 == 0:
