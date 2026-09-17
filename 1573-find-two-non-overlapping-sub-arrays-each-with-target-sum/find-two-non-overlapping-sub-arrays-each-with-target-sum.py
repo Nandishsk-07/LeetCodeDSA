@@ -1,11 +1,16 @@
-class Solution:
-    def minSumOfLengths(self, arr: List[int], target: int) -> int:
+class Solution(object):
+    def minSumOfLengths(self, arr, target):
+        """
+        :type arr: List[int]
+        :type target: int
+        :rtype: int
+        """
         n = len(arr)
         min_len = [float('inf')] * n
         ans = float('inf')
         curr_sum = 0
         left = 0
-        for right in range(n):
+        for right in xrange (n):
             curr_sum += arr[right]
             while curr_sum > target:
                 curr_sum -= arr[left]
