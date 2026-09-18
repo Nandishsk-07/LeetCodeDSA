@@ -1,5 +1,9 @@
-class Solution:
-    def maxNumOfSubstrings(self, s: str) -> list[str]:
+class Solution(object):
+    def maxNumOfSubstrings(self, s):
+        """
+        :type s: str
+        :rtype: List[str]
+        """
         first = {}
         last = {}
         for i, ch in enumerate(s):
