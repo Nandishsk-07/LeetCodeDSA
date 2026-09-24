@@ -1,8 +1,12 @@
-class Solution:
-    def smallestIndex(self, nums: List[int]) -> int:
-        for i, val in enumerate(nums):
+class Solution(object):
+    def smallestIndex(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        for i in xrange(len(nums)):
             digit_sum = 0
-            temp = val
+            temp = nums[i]
             while temp > 0:
                 digit_sum += temp % 10
                 temp //= 10
