@@ -1,5 +1,9 @@
-class Solution:
-    def braceExpansionII(self, expression: str) -> list[str]:
+class Solution(object):
+    def braceExpansionII(self, expression):
+        """
+        :type expression: str
+        :rtype: List[str]
+        """
         stack = []
         cur_union = set()
         cur_product = {""}
@@ -19,3 +23,4 @@ class Solution:
                 cur_product = {p + w for p in prev_product for w in inner_result}
                 cur_union = prev_union
         return sorted(list(cur_union | cur_product))
+        
