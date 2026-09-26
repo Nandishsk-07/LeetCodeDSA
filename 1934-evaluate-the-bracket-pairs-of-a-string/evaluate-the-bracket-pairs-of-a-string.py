@@ -1,5 +1,10 @@
-class Solution:
-    def evaluate(self, s: str, knowledge: list[list[str]]) -> str:
+class Solution(object):
+    def evaluate(self, s, knowledge):
+        """
+        :type s: str
+        :type knowledge: List[List[str]]
+        :rtype: str
+        """
         knowledge_dict = {k: v for k, v in knowledge}
         result = []
         cur_key = []
