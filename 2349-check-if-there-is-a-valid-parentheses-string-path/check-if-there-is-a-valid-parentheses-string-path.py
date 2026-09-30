@@ -1,20 +1,24 @@
-class Solution:
-    def hasValidPath(self, grid: list[list[str]]) -> bool:
+class Solution(object):
+    def hasValidPath(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: bool
+        """
         m, n = len(grid), len(grid[0])
         total_len = m + n - 1
         if total_len % 2 != 0:
             return False
         if grid[0][0] == ')' or grid[m - 1][n - 1] == '(':
-            return False    
+            return False
         max_bal = total_len // 2
         visited = set()
-        def dfs(r: int, c: int, bal: int) -> bool:
+        def dfs(r, c, bal):
             if bal < 0 or bal > max_bal:
                 return False
             if (m - 1 - r) + (n - 1 - c) < bal:
-                return False                
+                return False    
             if r == m - 1 and c == n - 1:
-                return bal == 0     
+                return bal == 0            
             state = (r, c, bal)
             if state in visited:
                 return False
