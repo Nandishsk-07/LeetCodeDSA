@@ -1,5 +1,9 @@
-class Solution:
-    def maxDepthAfterSplit(self, seq: str) -> list[int]:
+class Solution(object):
+    def maxDepthAfterSplit(self, seq):
+        """
+        :type seq: str
+        :rtype: List[int]
+        """
         res = []
         depth = 0
         for ch in seq:
@@ -10,4 +14,5 @@ class Solution:
                 res.append(depth % 2)
                 depth -= 1
         return res
+
         
