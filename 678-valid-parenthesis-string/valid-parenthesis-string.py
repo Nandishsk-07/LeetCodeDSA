@@ -1,5 +1,9 @@
-class Solution:
-    def checkValidString(self, s: str) -> bool:
+class Solution(object):
+    def checkValidString(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
         low = 0
         high = 0
         for ch in s:
@@ -12,8 +16,9 @@ class Solution:
             else:
                 low -= 1
                 high += 1
-            if high < 0:
+            if high <0:
                 return False
-            low = max(low, 0)
+            if low < 0:
+                low = 0
         return low == 0
         
