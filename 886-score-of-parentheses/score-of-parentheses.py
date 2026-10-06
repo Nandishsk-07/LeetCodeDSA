@@ -1,9 +1,13 @@
-class Solution:
-    def scoreOfParentheses(self, s: str) -> int:
+class Solution(object):
+    def scoreOfParentheses(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
         score = 0
         depth = 0
-        for i, ch in enumerate(s):
-            if ch == '(':
+        for i in xrange(len(s)):
+            if s[i] == '(':
                 depth += 1
             else:
                 depth -= 1
