@@ -1,38 +1,30 @@
-class Solution:
-    def removeInvalidParentheses(self, s: str) -> list[str]:
-        rem_left = 0
-        rem_right = 0
-        for ch in s:
-            if ch == '(':
-                rem_left += 1
-            elif ch == ')':
-                if rem_left > 0:
-                    rem_left -= 1
-                else:
-                    rem_right += 1           
-        result = set()
-        path = []
-        n = len(s)
-        def backtrack(idx: int, l_rem: int, r_rem: int, open_bal: int):
-            if open_bal < 0:
-                return
-            if idx == n:
-                if l_rem == 0 and r_rem == 0 and open_bal == 0:
-                    result.add("".join(path))
-                return
-            ch = s[idx]
-            if ch == '(' and l_rem > 0:
-                backtrack(idx + 1, l_rem - 1, r_rem, open_bal)
-            elif ch == ')' and r_rem > 0:
-                backtrack(idx + 1, l_rem, r_rem - 1, open_bal)
-            path.append(ch)
-            if ch == '(':
-                backtrack(idx + 1, l_rem, r_rem, open_bal + 1)
-            elif ch == ')':
-                backtrack(idx + 1, l_rem, r_rem, open_bal - 1)
-            else:
-                backtrack(idx + 1, l_rem, r_rem, open_bal)
-            path.pop()
-        backtrack(0, rem_left, rem_right, 0)
-        return list(result)
-        
+class Solution(object):
+    def removeInvalidParentheses(self, s):
+        """
+        :type s: str
+        :rtype: List[str]
+        """
+        def is_valid(string):
+            count = 0
+            for ch in string:
+                if ch == '(':
+                    count += 1
+                elif ch == ')':
+                    count -= 1
+                    if count < 0:
+                        return False
+            return count == 0
+        queue = set([s])
+        while queue:
+            valid = [string for string in queue if is_valid(string)]
+            if valid:
+                return valid
+            next_level = set()
+            for string in queue:
+                for i in xrange(len(string)):
+                    if string[i] in '()':
+                        if i > 0 and string[i] == string[i - 1]:
+                            continue
+                        next_level.add(string[:i] + string[i + 1:])
+            queue = next_level
+        return [""]
