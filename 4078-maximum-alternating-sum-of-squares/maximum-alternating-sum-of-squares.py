@@ -1,5 +1,9 @@
-class Solution:
-    def maxAlternatingSum(self, nums: List[int]) -> int:
+class Solution(object):
+    def maxAlternatingSum(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         n = len(nums)
         squares = [x * x for x in nums]
         squares.sort()
