@@ -1,5 +1,10 @@
-class Solution:
-    def maxSumOfSquares(self, num: int, sum: int) -> str:
+class Solution(object):
+    def maxSumOfSquares(self, num, sum):
+        """
+        :type num: int
+        :type sum: int
+        :rtype: str
+        """
         if sum < 1 or sum > 9 * num:
             return ""
         q, r = divmod(sum, 9)
