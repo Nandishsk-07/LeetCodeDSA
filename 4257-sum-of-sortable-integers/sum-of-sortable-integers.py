@@ -1,11 +1,15 @@
-class Solution:
-    def sortableIntegers(self, nums: list[int]) -> int:
+class Solution(object):
+    def sortableIntegers(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         n = len(nums)
         is_sorted = True
-        for i in range(1, n):
+        for i in xrange(1, n):
             if nums[i] < nums[i - 1]:
                 is_sorted = False
-                break
+                break        
         divisors = []
         d = 1
         while d * d <= n:
@@ -15,15 +19,15 @@ class Solution:
                     divisors.append(n // d)
             d += 1
         if is_sorted:
-            return sum(divisors)
-        def is_sortable(k: int) -> bool:
+            return sum(divisors)   
+        def is_sortable(k):
             prev_max = -1
-            for start in range(0, n, k):
+            for start in xrange(0, n, k):
                 end = start + k
                 drop_count = 0
                 block_min = nums[start]
-                block_max = nums[start]
-                for i in range(start, end - 1):
+                block_max = nums[start]   
+                for i in xrange(start, end - 1):
                     if nums[i] > nums[i + 1]:
                         drop_count += 1
                         if drop_count > 1:
@@ -31,7 +35,7 @@ class Solution:
                     if nums[i + 1] < block_min:
                         block_min = nums[i + 1]
                     if nums[i + 1] > block_max:
-                        block_max = nums[i + 1]
+                        block_max = nums[i + 1]       
                 if drop_count == 1:
                     if nums[end - 1] > nums[start]:
                         return False
