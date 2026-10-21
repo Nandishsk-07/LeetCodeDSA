@@ -1,8 +1,12 @@
-class Solution:
-    def minOperations(self, s: str) -> int:
+class Solution(object):
+    def minOperations(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
         n = len(s)
         is_sorted = True
-        for i in range(1, n):
+        for i in xrange(1, n):
             if s[i] < s[i - 1]:
                 is_sorted = False
                 break
@@ -14,8 +18,7 @@ class Solution:
         max_char = max(s)
         if s[0] == min_char or s[-1] == max_char:
             return 1
-        if (s[0] == max_char and s[-1] == min_char and min_char not in s[:-1] and max_char not in s[1:]):
+        if (s[0] == max_char and s[-1] == min_char and (min_char not in s[:-1]) and (max_char not in s[1:])):
             return 3
         return 2
-        
         
