@@ -1,7 +1,12 @@
-class Solution:
-    def sortPermutation(self, nums: List[int]) -> int:
+class Solution(object):
+    def sortPermutation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
         ans = -1
-        for i, val in enumerate(nums):
+        for i in xrange(len(nums)):
+            val = nums[i]
             if val != i:
                 if ans == -1:
                     ans = val & i
