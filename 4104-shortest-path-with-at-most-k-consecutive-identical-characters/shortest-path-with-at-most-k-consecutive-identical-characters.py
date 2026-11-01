@@ -1,11 +1,18 @@
-class Solution:
-    def shortestPath(self, n: int, edges: List[List[int]], labels: str, k: int) -> int:
+class Solution(object):
+    def shortestPath(self, n, edges, labels, k):
+        """
+        :type n: int
+        :type edges: List[List[int]]
+        :type labels: str
+        :type k: int
+        :rtype: int
+        """
         if n == 1:
             return 0
-        adj = [[] for _ in range(n)]
+        adj = [[] for _ in xrange(n)]
         for u, v, w in edges:
             adj[u].append((v, w))
-        dist = [[float('inf')] * (k + 1) for _ in range(n)]
+        dist = [[float('inf')] * (k + 1) for _ in xrange(n)]
         dist[0][1] = 0
         pq = [(0, 0, 1)]
         while pq:
@@ -13,7 +20,7 @@ class Solution:
             if d > dist[u][count]:
                 continue
             if u == n - 1:
-                return d
+                return d    
             u_label = labels[u]
             for v, w in adj[u]:
                 if labels[v] == u_label:
@@ -26,6 +33,6 @@ class Solution:
                     next_count = 1
                     if d + w < dist[v][next_count]:
                         dist[v][next_count] = d + w
-                        heapq.heappush(pq, (d + w, v, next_count))
+                        heapq.heappush(pq, (d + w, v, next_count))       
         return -1
         
