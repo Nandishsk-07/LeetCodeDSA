@@ -1,5 +1,11 @@
-class Solution:
-    def findTheDistanceValue(self, arr1: list[int], arr2: list[int], d: int) -> int:
+class Solution(object):
+    def findTheDistanceValue(self, arr1, arr2, d):
+        """
+        :type arr1: List[int]
+        :type arr2: List[int]
+        :type d: int
+        :rtype: int
+        """
         arr2.sort()
         m = len(arr2)
         count = 0
