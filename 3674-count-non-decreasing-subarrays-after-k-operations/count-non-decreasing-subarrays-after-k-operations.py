@@ -1,11 +1,16 @@
-class Solution:
-    def countNonDecreasingSubarrays(self, nums: List[int], k: int) -> int:
+class Solution(object):
+    def countNonDecreasingSubarrays(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
         n = len(nums)
         ans = 0
         ops = 0
         r = n - 1
         dq = deque()
-        for l in range(n - 1, -1, -1):
+        for l in xrange(n - 1, -1, -1):
             curr_val = nums[l]
             curr_count = 1
             while dq and dq[0][0] <= curr_val:
@@ -21,4 +26,5 @@ class Solution:
                 r -= 1
             ans += r - l + 1
         return ans
+                
         
