@@ -1,14 +1,21 @@
-class Solution:
-    def minimumSumSubarray(self, nums: List[int], l: int, r: int) -> int:
+class Solution(object):
+    def minimumSumSubarray(self, nums, l, r):
+        """
+        :type nums: List[int]
+        :type l: int
+        :type r: int
+        :rtype: int
+        """
         n = len(nums)
         pref = [0] * (n + 1)
-        for i in range(n):
+        for i in xrange(n):
             pref[i + 1] = pref[i] + nums[i]
         min_sum = float('inf')
-        for i in range(n - l + 1):
-            for j in range(i + l, min(n, i + r) + 1):
+        for i in xrange(n - l + 1):
+            end_limit = min(n, i + r)
+            for j in xrange(i + l, end_limit + 1):
                 curr_sum = pref[j] - pref[i]
-                if curr_sum > 0 and curr_sum < min_sum:
+                if 0 < curr_sum < min_sum:
                     min_sum = curr_sum
         return min_sum if min_sum != float('inf') else -1
         
