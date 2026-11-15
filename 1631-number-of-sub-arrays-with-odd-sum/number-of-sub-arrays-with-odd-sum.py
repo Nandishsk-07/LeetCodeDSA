@@ -1,5 +1,9 @@
-class Solution:
-    def numOfSubarrays(self, arr: list[int]) -> int:
+class Solution(object):
+    def numOfSubarrays(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: int
+        """
         MOD = 10**9 + 7
         even_count = 1
         odd_count = 0
