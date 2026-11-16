@@ -1,8 +1,13 @@
-class Solution:
-    def digitSum(self, s: str, k: int) -> str:
+class Solution(object):
+    def digitSum(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
         while len(s) > k:
             groups = []
-            for i in range(0, len(s), k):
+            for i in xrange(0, len(s), k):
                 group_sum = sum(int(ch) for ch in s[i : i + k])
                 groups.append(str(group_sum))
             s = "".join(groups)
