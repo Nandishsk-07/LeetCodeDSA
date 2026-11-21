@@ -1,11 +1,16 @@
-class Solution:
-    def findSubtreeSizes(self, parent: List[int], s: str) -> List[int]:
+class Solution(object):
+    def findSubtreeSizes(self, parent, s):
+        """
+        :type parent: List[int]
+        :type s: str
+        :rtype: List[int]
+        """
         n = len(parent)
-        adj = [[] for _ in range(n)]
-        for i in range(1, n):
+        adj = [[] for _ in xrange(n)]
+        for i in xrange(1, n):
             adj[parent[i]].append(i)
         new_parent = list(parent)
-        last_seen = [[] for _ in range(26)]
+        last_seen = [[] for _ in xrange(26)]
         stack = [(0, 0)]
         while stack:
             u, state = stack.pop()
@@ -18,10 +23,10 @@ class Solution:
                 for v in adj[u]:
                     stack.append((v, 0))
             else:
-                last_seen[c].pop()
-        new_adj = [[] for _ in range(n)]
-        for i in range(1, n):
-            new_adj[new_parent[i]].append(i)            
+                last_seen[c].pop()        
+        new_adj = [[] for _ in xrange(n)]
+        for i in xrange(1, n):
+            new_adj[new_parent[i]].append(i)    
         order = []
         dfs_stack = [0]
         while dfs_stack:
@@ -35,3 +40,4 @@ class Solution:
             if p != -1:
                 ans[p] += ans[u]
         return ans
+        
