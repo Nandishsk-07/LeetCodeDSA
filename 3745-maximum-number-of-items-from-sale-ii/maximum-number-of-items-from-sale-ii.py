@@ -1,17 +1,22 @@
-class Solution:
-    def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
+class Solution(object):
+    def maximumSaleItems(self, items, budget):
+        """
+        :type items: List[List[int]]
+        :type budget: int
+        :rtype: int
+        """
         n = len(items)
         freq = [0] * (n + 1)
-        global_min_p = float('inf')
+        global_min_p = 10**18
         for f, p in items:
             freq[f] += 1
             if p < global_min_p:
                 global_min_p = p
         mult_count = [0] * (n + 1)
-        for f in range(1, n + 1):
+        for f in xrange(1, n + 1):
             if freq[f] > 0:
                 total = 0
-                for m in range(f, n + 1, f):
+                for m in xrange(f, n + 1, f):
                     total += freq[m]
                 mult_count[f] = total
         bundles = []
@@ -42,3 +47,4 @@ class Solution:
             curr_cost += cap * price
             curr_items += cap * 2
         return ans
+        
